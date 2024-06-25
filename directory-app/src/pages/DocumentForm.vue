@@ -1,44 +1,26 @@
-<!-- src/pages/Index.vue -->
 <template>
-  <q-page class="flex flex-center">
-    <q-layout view="hHh lpR fFf">
-      <q-page-container>
-        <q-page class="q-pa-md">
-          <q-gutter-md>
-            <q-layout>
+  <div class="flex">
+    <div class="w-1/4 h-screen bg-gray-100 p-4">
+      <document-form />
+      <!-- <nav-bar /> -->
+    </div>
 
-              <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-                <document-form />
-              </q-drawer>
-
-              <q-page-container>
-                <user-files />
-              </q-page-container>
-            </q-layout>
-          </q-gutter-md>
-        </q-page>
-      </q-page-container>
-    </q-layout>
-  </q-page>
+    <div class="w-3/4 p-4 bg-gray-100">
+      <user-files />
+    </div>
+  </div>
 </template>
 
 <script>
 import DocumentForm from "../components/DocumentForm.vue";
 import UserFiles from "../components/UserFiles.vue";
+// import NavBar from "../components/NavBar.vue";
 
 export default {
   components: {
     DocumentForm,
     UserFiles,
+    // NavBar,
   },
 };
 </script>
-
-<style scoped>
-.q-drawer {
-  width: 250px;
-}
-.q-page-container {
-  flex: 1;
-}
-</style>

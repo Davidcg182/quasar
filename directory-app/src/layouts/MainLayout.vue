@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
         <q-toolbar-title>
@@ -22,4 +22,4 @@ const leftDrawerOpen = ref(false)
 function toggleLeftDrawer () {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
-</script>
+</script> -->

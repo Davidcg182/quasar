@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <q-item
     clickable
     tag="a"
@@ -45,4 +45,4 @@ const props = defineProps({
     default: ''
   }
 })
-</script>
+</script> -->

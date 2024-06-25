@@ -1,11 +1,14 @@
-<!-- src/pages/Register.vue -->
 <template>
-  <div class="register">
-    <h2>Registro</h2>
-    <q-input v-model="email" label="Correo electrónico" />
-    <q-input v-model="password" type="password" label="Contraseña" />
-    <q-btn color="primary" label="Registrarse" @click="registerUser" />
-    <router-link to="/login">Ya tengo una cuenta, iniciar sesión</router-link>
+  <div class="flex items-center justify-center h-screen">
+    <div class="w-2/4 bg-white py-8 px-4 sm:px-8 shadow-2xl rounded-2xl column">
+      <h2 className="text-2xl text-center mb-4">Registro</h2>
+      <q-input v-model="email" label="Correo electrónico" class="mb-4" />
+      <q-input v-model="password" type="password" label="Contraseña" class="mb-4" />
+      <q-btn color="primary" label="Registrarse" @click="registerUser" class="mb-4" />
+      <router-link to="/login" class="text-center block underline"
+        >Ya tengo una cuenta, iniciar sesión</router-link
+      >
+    </div>
   </div>
 </template>
 
@@ -29,20 +32,11 @@ export default {
           this.email,
           this.password
         );
-        this.$router.push("/document-form"); // Redirige al usuario a /document-form
+        this.$router.push("/document-form");
       } catch (error) {
         console.error("Error registering user:", error.message);
-        // Manejar el error (por ejemplo, mostrar un mensaje al usuario)
       }
     },
   },
 };
 </script>
-
-<style scoped>
-.register {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-}
-</style>

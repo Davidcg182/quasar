@@ -1,26 +1,15 @@
-<!-- src/pages/Home.vue -->
 <template>
-  <div class="home">
-    <user-register /> <!-- Aquí se renderizarán las páginas protegidas -->
+  <div>
+    <user-register />
   </div>
 </template>
 
 <script>
-
-import UserRegister from '../components/UserRegister.vue';
+import UserRegister from "../components/UserRegister.vue";
 
 export default {
   components: {
-    UserRegister
-  }
+    UserRegister,
+  },
 };
-
 </script>
-
-<style scoped>
-.home {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-}
-</style>

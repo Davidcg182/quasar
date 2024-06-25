@@ -1,11 +1,14 @@
-<!-- src/pages/Login.vue -->
 <template>
-  <div class="login">
-    <h2>Iniciar Sesión</h2>
-    <q-input v-model="email" label="Correo electrónico" />
-    <q-input v-model="password" type="password" label="Contraseña" />
-    <q-btn color="primary" label="Iniciar Sesión" @click="loginUser" />
-    <router-link to="/register">No tengo una cuenta, registrarme</router-link>
+  <div class="flex items-center justify-center h-screen">
+    <div class="w-2/4 bg-white py-8 px-4 sm:px-8 shadow-2xl rounded-2xl column">
+      <h2 class="text-2xl text-center mb-4">Iniciar Sesión</h2>
+      <q-input v-model="email" label="Correo electrónico" class="mb-4" />
+      <q-input v-model="password" type="password" label="Contraseña" class="mb-4" />
+      <q-btn color="primary" label="Iniciar Sesión" @click="loginUser" class="mb-4" />
+      <router-link to="/register" class="text-center block underline"
+        >No tengo una cuenta, registrarme</router-link
+      >
+    </div>
   </div>
 </template>
 
@@ -38,11 +41,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.login {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-}
-</style>
