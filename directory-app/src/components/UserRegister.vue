@@ -1,6 +1,8 @@
 <template>
   <div class="flex items-center justify-center h-screen">
-    <div class="w-2/4 bg-white py-8 px-4 sm:px-8 shadow-2xl rounded-2xl column">
+    <div
+      class="w-11/12 md:w-2/4 bg-white py-8 px-4 sm:px-8 shadow-2xl rounded-2xl column"
+    >
       <h2 className="text-2xl text-center mb-4">Registro</h2>
       <q-input v-model="email" label="Correo electrónico" class="mb-4" />
       <q-input v-model="password" type="password" label="Contraseña" class="mb-4" />

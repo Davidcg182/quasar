@@ -1,7 +1,12 @@
 <template>
-  <button @click="logout" class="bg-primary text-white font-bold py-2 px-4 rounded">
-    Cerrar sesión
-  </button>
+  <div class="flex items-center justify-center">
+    <button
+      @click="logout"
+      class="bg-primary text-white font-bold py-2 px-4 rounded w-3/4 md:w-full"
+    >
+      Cerrar sesión
+    </button>
+  </div>
 </template>
 
 <script>

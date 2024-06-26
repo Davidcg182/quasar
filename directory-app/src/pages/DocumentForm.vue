@@ -1,11 +1,11 @@
 <template>
-  <div class="flex">
-    <div class="w-1/4 h-screen bg-gray-100 p-4 sm:hidden md:block">
+  <div class="flex flex-col md:flex-row w-full">
+    <div class="md:w-1/4 w-full h-screen bg-gray-100 p-4">
       <document-form />
     </div>
 
-    <div class="w-3/4 p-4 bg-gray-100 relative">
-      <div class="absolute top-4 right-4">
+    <div class="w-full md:w-3/4 p-4 bg-gray-100 md:relative flex flex-col md:flex-row">
+      <div class="md:absolute md:top-4 md:right-4">
         <user-logout />
       </div>
       <user-files />

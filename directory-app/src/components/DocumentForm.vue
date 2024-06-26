@@ -10,7 +10,7 @@
       <q-input v-model="document.last_name" label="Apellido" />
       <q-input v-model="document.file_name" label="Nombre del archivo" />
       <q-input v-model="document.pages" label="Cantidad de paginas" />
-      <q-input v-model="document.size" label="Tamaño" />
+      <q-input v-model="document.size" label="Tamaño" :disable="true" />
       <q-file v-model="file" label="Entrada de archivo" />
       <div class="flex items-center justify-center">
         <q-btn color="primary" type="submit" label="Guardar" class="mt-4 w-3/4" />
@@ -37,7 +37,7 @@ export default {
         last_name: "",
         file_name: "",
         pages: "",
-        size: "",
+        size: "10",
         pinned: false,
       },
       file: null,
