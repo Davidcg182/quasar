@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -33,7 +32,23 @@ export default {
           this.password
         );
         this.$router.push("/document-form");
+        this.$q.notify({
+          type: "positive",
+          message: "Registro exitoso",
+        });
       } catch (error) {
+        if (error.message.includes("auth/email-already")) {
+          this.$q.notify({
+            type: "negative",
+            message: "El usuario ya se encuentra registrado",
+          });
+        } else {
+          this.$q.notify({
+            type: "negative",
+            message: "Error, intenta en otro momento",
+          });
+        }
+
         console.error("Error registering user:", error.message);
       }
     },

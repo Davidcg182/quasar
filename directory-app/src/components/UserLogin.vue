@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -33,9 +32,23 @@ export default {
           this.password
         );
         this.$router.push("/document-form"); // Redirige al usuario a /document-form
+        this.$q.notify({
+          type: "positive",
+          message: "Sesion iniciada",
+        });
       } catch (error) {
+        if (error.message.includes("auth/invalid-credential")) {
+          this.$q.notify({
+            type: "negative",
+            message: "No existe una cuenta asociada a este correo",
+          });
+        } else {
+          this.$q.notify({
+            type: "negative",
+            message: "Error, intenta en otro momento",
+          });
+        }
         console.error("Error logging in:", error.message);
-        // Manejar el error (por ejemplo, mostrar un mensaje al usuario)
       }
     },
   },

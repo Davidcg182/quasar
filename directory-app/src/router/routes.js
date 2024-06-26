@@ -1,8 +1,9 @@
 const routes = [
 
-  { path: '/', component: () => import('pages/MainHome.vue'), meta: { requiresAuth: true } },
+  { path: '/', component: () => import('pages/MainHome.vue') },
   { path: '/register', component: () => import('pages/UserRegister.vue') },
   { path: '/login', component: () => import('pages/UserLogin.vue') },
+
   {
     path: '/document-form',
     component: () => import('pages/DocumentForm.vue'),
@@ -10,7 +11,7 @@ const routes = [
   },
 
   {
-    path: '/:catchAll(.*)*',
+    path: '/:catchAll(.)',
     component: () => import('pages/ErrorNotFound.vue')
   }
 ]

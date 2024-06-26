@@ -20,6 +20,9 @@
 import { db, storage, ref, uploadBytes, getDownloadURL } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { auth } from "../firebase";
+import { computed } from "vue";
+
+import { useDocumentStore } from "../stores/documents.js";
 
 export default {
   name: "DocumentForm",
@@ -36,8 +39,13 @@ export default {
       file: null,
     };
   },
+
   methods: {
     async submitForm() {
+      const documentStore = useDocumentStore();
+
+      const addDocument = (document) => documentStore.addDocument(document);
+
       if (this.file) {
         const fileRef = ref(
           storage,
@@ -52,6 +60,11 @@ export default {
             userId: auth.currentUser.uid, // Agrega el userId del usuario actual
             fileURL,
           });
+
+          addDocument({ ...this.document, fileURL, userId: auth.currentUser.uid });
+          const files = computed(() => documentStore.documents);
+
+          console.log("files", files);
 
           this.$q.notify({
             type: "positive",
