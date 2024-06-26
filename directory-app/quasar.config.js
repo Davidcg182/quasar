@@ -11,7 +11,6 @@
 
 const { configure } = require('quasar/wrappers');
 
-
 module.exports = configure(function (/* ctx */) {
   return {
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
@@ -74,7 +73,7 @@ module.exports = configure(function (/* ctx */) {
           eslint: {
             lintCommand: 'eslint "./**/*.{js,mjs,cjs,vue}"'
           }
-        }, { server: false }]
+        }, { server: false }],
       ],
     },
 

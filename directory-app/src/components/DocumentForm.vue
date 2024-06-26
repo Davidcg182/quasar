@@ -2,7 +2,10 @@
   <div class="bg-white py-4 px-6 shadow-lg rounded-lg">
     <h3 class="text-xl font-semibold mb-4">Almacena tus documentos</h3>
     <q-form @submit="submitForm">
-      <q-input v-model="document.id" label="Numero de identificación (documento)" />
+      <q-input
+        v-model="document.user_docto"
+        label="Numero de identificación (documento)"
+      />
       <q-input v-model="document.name" label="Nombre" />
       <q-input v-model="document.last_name" label="Apellido" />
       <q-input v-model="document.file_name" label="Nombre del archivo" />
@@ -20,21 +23,22 @@
 import { db, storage, ref, uploadBytes, getDownloadURL } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { auth } from "../firebase";
-import { computed } from "vue";
-
 import { useDocumentStore } from "../stores/documents.js";
+
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   name: "DocumentForm",
   data() {
     return {
       document: {
-        id: "",
+        user_docto: "",
         name: "",
         last_name: "",
         file_name: "",
         pages: "",
         size: "",
+        pinned: false,
       },
       file: null,
     };
@@ -55,23 +59,30 @@ export default {
           await uploadBytes(fileRef, this.file);
           const fileURL = await getDownloadURL(fileRef);
 
-          await addDoc(collection(db, "documents"), {
+          const uuid = uuidv4();
+
+          await addDoc(collection(db, `documents`), {
             ...this.document,
             userId: auth.currentUser.uid, // Agrega el userId del usuario actual
             fileURL,
+            id: uuid,
           });
 
-          addDocument({ ...this.document, fileURL, userId: auth.currentUser.uid });
-          const files = computed(() => documentStore.documents);
+          addDocument({
+            ...this.document,
+            fileURL,
+            userId: auth.currentUser.uid,
+            id: uuid,
+          });
 
-          console.log("files", files);
+          // const files = computed(() => documentStore.documents);
 
           this.$q.notify({
             type: "positive",
             message: "Documento guardado exitosamente!",
           });
 
-          this.document.id = "";
+          this.document.user_docto = "";
           this.document.name = "";
           this.document.last_name = "";
           this.document.file_name = "";
